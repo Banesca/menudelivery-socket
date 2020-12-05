@@ -2,12 +2,12 @@ var app = require('express')();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
-app.get('/terminal', (req, res) => {
-  res.sendFile(__dirname + '/terminal.html');
+app.get('/restaurant', (req, res) => {
+  res.sendFile(__dirname + '/restaurant.html');
 });
 
 app.get('/api', (req, res) => {
-    res.sendFile(__dirname + '/api.html');
+    res.sendFile(__dirname + '/api.html'); 
   });
 
 io.on('connection', (socket) => {
@@ -17,7 +17,7 @@ io.on('connection', (socket) => {
 
     let restaurant = socket.handshake.query.restaurant;//Obtenemos el restaurant
 
-    if(restaurant != undefined && terminal != undefined){
+    if(restaurant != undefined){
         console.log('Restaurant: ' + restaurant + ' Conectado');
     }else{
         console.log('Api Conectada');
