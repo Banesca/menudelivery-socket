@@ -1,0 +1,52 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    
+
+   <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+    $(function () {
+        var socket = io();
+      
+        $('#cambioProductos').click(function() {
+              var obj = {contrato: 'aff7aeec-8b41-4fc5-801e-3ec60d2ecafc', type: 'all'};
+              socket.emit('changeofproduct', obj);
+        })
+
+         $('#changeofcategory').click(function() {
+              var obj = {contrato: 'aff7aeec-8b41-4fc5-801e-3ec60d2ecafc', type: 'all'};
+              socket.emit('changeofcategory', obj);
+        })
+
+         $('#changeofterminal').click(function() {
+              var obj = {contrato: 'aff7aeec-8b41-4fc5-801e-3ec60d2ecafc',terminal: 'e1d38526-55f5-4fca-ae70-8487b32e7b21'};
+              socket.emit('changeofterminal', obj);
+        })
+
+        $('#cambioProductosonly').click(function() {
+              var obj = {contrato: 'aff7aeec-8b41-4fc5-801e-3ec60d2ecafc', type: 'onlyone',id:'5f562d4e9bef87a141848ff5'};
+              socket.emit('changeofproduct', obj);
+        })
+
+         $('#changeofcategoryonly').click(function() {
+              var obj = {contrato: 'aff7aeec-8b41-4fc5-801e-3ec60d2ecafc', type: 'onlyone',id:'5f529b2acf0cab0c5189adcd'};
+              socket.emit('changeofcategory', obj);
+        })
+
+        
+    });
+    </script>
+
+  </head>
+  <body>
+      <button id="cambioProductos">Cambiar Productos all</button>
+      <button id="changeofcategory">Cambiar Categorias all</button>
+      <button id="changeofterminal">Cambiar Terminales only one</button>
+      <button id="cambioProductosonly">Cambiar Productos only one</button>
+      <button id="changeofcategoryonly">Cambiar Categorias only one</button>
+
+  </body>
+</html>

@@ -1,0 +1,10 @@
+buscar proceso 
+netstat -tulpn | grep :2000
+
+
+init dev
+npm start
+
+
+init server
+pm2 start "npm run dev" --name menudelivery-socket
