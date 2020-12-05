@@ -13,8 +13,6 @@ app.get('/api', (req, res) => {
 io.on('connection', (socket) => {
 
 
-    console.log(socket.handshake.query.restaurant)
-
     let restaurant = socket.handshake.query.restaurant;//Obtenemos el restaurant
 
     if(restaurant != undefined){
@@ -33,13 +31,14 @@ io.on('connection', (socket) => {
         io.emit('chat message', "Lo recibii");
 
     });
-
+ 
     
     socket.join(restaurant);// Suscribimos la terminal  a el room del contrato 
      
     // Eventos que eschuchan los llamados de la API 
     socket.on('changeorder', (msg) => {
-        io.to(msg.contrato).emit('changeorder'); // Emitimos el evento de cambio en productos 
+        console.log("*changeorder*")
+        io.to(msg.restaurant).emit('changeorder'); // Emitimos el evento de cambio en productos 
         socket.disconnect()// Desconectamos la api
     });
  
