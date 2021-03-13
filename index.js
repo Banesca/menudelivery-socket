@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
       console.log("*newPrint*")
       console.log(msg.restaurant)
 
-      io.to(msg.restaurant).emit('newPrint'); // Emitimos el evento de cambio en productos 
+      io.to(msg.restaurant).emit(msg); // Emitimos el evento de cambio en productos 
       socket.disconnect()// Desconectamos la api
   });
  
