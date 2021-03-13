@@ -31,6 +31,8 @@ io.on('connection', (socket) => {
         io.emit('chat message', "Lo recibii");
 
     });
+
+    
  
     
     socket.join(restaurant);// Suscribimos la terminal  a el room del contrato 
@@ -47,7 +49,7 @@ io.on('connection', (socket) => {
       console.log("*newPrint*")
       console.log(msg.restaurant)
 
-      io.to(msg.restaurant).emit(msg); // Emitimos el evento de cambio en productos 
+      io.to(msg.restaurant).emit('newPrint',msg); // Emitimos el evento de cambio en productos 
       socket.disconnect()// Desconectamos la api
   });
  
