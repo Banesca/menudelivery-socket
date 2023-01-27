@@ -3,14 +3,23 @@ var http = require('http').createServer(app);
 
 const whitelist = ['https://menusoftware.info','https://api.menusoftware.info'];
 
-var io = require('socket.io')(http,{origins:'menusoftware.info:* http://menusoftware.info:* https://menusoftware.info:*'});
+var io = require('socket.io')(http,{origins:'https://menusoftware.info',
+handlePreflightRequest: (req, res) => {
+  res.writeHead(200, {
+    "Access-Control-Allow-Origin": "https://example.com",
+    "Access-Control-Allow-Methods": "GET,POST",
+    "Access-Control-Allow-Headers": "my-custom-header",
+    "Access-Control-Allow-Credentials": true
+  });
+  res.end();
+}});
 
 
 var fs = require('fs');
 var https = require('https');
 const cors = require('cors');
 app.use(cors());
-io.set('origins', '*:*');
+io.origins(['https://menusoftware.info']);
 
 
 app.get('/restaurant', (req, res) => {
