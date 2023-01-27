@@ -3,34 +3,13 @@ var http = require('http').createServer(app);
 
 const whitelist = ['https://menusoftware.info','https://api.menusoftware.info'];
 
-var io = require('socket.io')(http,{
-  handlePreflightRequest: (req, res) => {
-      const headers = {
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
-          "Access-Control-Allow-Credentials": true
-      };
-      res.writeHead(200, headers);
-      res.end();
-  }
-});
+var io = require('socket.io')(http,{cors: {origin: "*"}});
 
 
 var fs = require('fs');
 var https = require('https');
 const cors = require('cors');
-
-const corsOptions = {
-  credentials: true, // This is important.
-  origin: (origin, callback) => {
-    if(whitelist.includes(origin))
-      return callback(null, true)
-
-      callback(new Error('Not allowed by CORS'));
-  }
-}
-
-app.use(cors(corsOptions));
+app.use(cors());
 io.set('origins', '*:*');
 
 
