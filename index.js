@@ -3,6 +3,10 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var fs = require('fs');
 var https = require('https');
+const cors = require('cors');
+
+app.use(cors());
+
 
 app.get('/restaurant', (req, res) => {
   res.sendFile(__dirname + '/restaurant.html');

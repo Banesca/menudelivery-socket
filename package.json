@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "description": "Moretti socket socket.io, productos categorias, configuracion terminales.",
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "^4.15.2",
         "nodemon": "^2.0.4",
         "save-dev": "0.0.1-security",
