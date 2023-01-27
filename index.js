@@ -1,7 +1,7 @@
 var app = require('express')();
 var http = require('http').createServer(app);
 
-const whitelist = ['https://menusoftware.info'];
+const whitelist = ['https://menusoftware.info','https://api.menusoftware.info'];
 
 var io = require('socket.io')(http,{
   handlePreflightRequest: (req, res) => {
