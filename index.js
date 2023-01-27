@@ -1,6 +1,6 @@
 var app = require('express')();
 var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+var io = require('socket.io')(http,{ origins: '*:*'});
 var fs = require('fs');
 var https = require('https');
 const cors = require('cors');
