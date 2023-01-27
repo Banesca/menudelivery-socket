@@ -6,6 +6,7 @@ var https = require('https');
 const cors = require('cors');
 
 app.use(cors());
+io.set('origins', '*:*');
 
 
 app.get('/restaurant', (req, res) => {
