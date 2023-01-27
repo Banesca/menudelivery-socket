@@ -1,5 +1,8 @@
 var app = require('express')();
 var http = require('http').createServer(app);
+
+const whitelist = ['https://menusoftware.info'];
+
 var io = require('socket.io')(http,{
   handlePreflightRequest: (req, res) => {
       const headers = {
@@ -17,7 +20,17 @@ var fs = require('fs');
 var https = require('https');
 const cors = require('cors');
 
-app.use(cors());
+const corsOptions = {
+  credentials: true, // This is important.
+  origin: (origin, callback) => {
+    if(whitelist.includes(origin))
+      return callback(null, true)
+
+      callback(new Error('Not allowed by CORS'));
+  }
+}
+
+app.use(cors(corsOptions));
 io.set('origins', '*:*');
 
 
