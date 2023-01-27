@@ -3,7 +3,7 @@ var http = require('http').createServer(app);
 
 const whitelist = ['https://menusoftware.info','https://api.menusoftware.info'];
 
-var io = require('socket.io')(http,{cors: {origin: "*"}});
+var io = require('socket.io')(http,{origins:'menusoftware.info:* http://menusoftware.info:* https://menusoftware.info:*'});
 
 
 var fs = require('fs');
