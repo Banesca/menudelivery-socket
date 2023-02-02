@@ -36,19 +36,9 @@ http.listen(2020, () => {
 
 
 // SOCKET HTTPS UPDATE
-var io = require('socket.io')(serverhttps,{origins:'https://menusoftware.info',
-handlePreflightRequest: (req, res) => {
-  res.writeHead(200, {
-    "Access-Control-Allow-Origin": "https://example.com",
-    "Access-Control-Allow-Methods": "GET,POST",
-    "Access-Control-Allow-Headers": "my-custom-header",
-    "Access-Control-Allow-Credentials": true
-  });
-  res.end();
-}});
+var io = require('socket.io')(serverhttps)
 
 io.origins(['https://menusoftware.info']);
-
 
 
 io.on('connection', (socket) => {
