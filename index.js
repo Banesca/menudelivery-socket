@@ -1,9 +1,9 @@
 var app = require('express')();
 var http = require('http').createServer(app);
+var https = require('https');
 
-const whitelist = ['https://menusoftware.info','https://api.menusoftware.info'];
 
-var io = require('socket.io')(http,{origins:'https://menusoftware.info',
+var io = require('socket.io')(https,{origins:'https://menusoftware.info',
 handlePreflightRequest: (req, res) => {
   res.writeHead(200, {
     "Access-Control-Allow-Origin": "https://example.com",
@@ -16,7 +16,6 @@ handlePreflightRequest: (req, res) => {
 
 
 var fs = require('fs');
-var https = require('https');
 const cors = require('cors');
 app.use(cors());
 io.origins(['https://menusoftware.info']);
