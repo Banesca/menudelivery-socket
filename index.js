@@ -38,7 +38,7 @@ http.listen(2020, () => {
 // SOCKET HTTPS UPDATE
 var io = require('socket.io')(serverhttps)
 
-io.origins(['https://menusoftware.info','https://menusoftware.info:80','https://menusoftware.info:443','http://localhost']);
+io.origins(['https://menusoftware.info','https://menusoftware.info:80','https://menusoftware.info:443','http://localhost','http://localhost:80']);
 
 
 io.on('connection', (socket) => {
