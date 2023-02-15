@@ -38,7 +38,7 @@ http.listen(2020, () => {
 // SOCKET HTTPS UPDATE
 var io = require('socket.io')(serverhttps,{
   allowRequest: (req, cb) => {
-    console.log("Llamada desde,"+  req.headers.origin)
+    console.log("Llamada desde: "+  req.headers.origin)
   }
 })
 
