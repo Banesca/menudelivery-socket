@@ -39,10 +39,12 @@ http.listen(2020, () => {
 var io = require('socket.io')(serverhttps,{
   allowRequest: (req, cb) => {
     console.log("Llamada desde: "+  req.headers.origin)
+    callback(null, true);
+
   }
 })
 
-io.origins(['https://menusoftware.info','https://menusoftware.info:80','https://menusoftware.info:443','http://localhost','http://localhost:80','http://72.167.55.26','http://72.167.55.26:2021','https://72.167.55.26:2021','https://api.menusoftware.info:2021','http://api.menusoftware.info','undefined']);
+//io.origins(['https://menusoftware.info','https://menusoftware.info:80','https://menusoftware.info:443','http://localhost','http://localhost:80','http://72.167.55.26','http://72.167.55.26:2021','https://72.167.55.26:2021','https://api.menusoftware.info:2021','http://api.menusoftware.info','undefined']);
 
 
 io.on('connection', (socket) => {
