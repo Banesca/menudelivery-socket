@@ -39,7 +39,6 @@ http.listen(2020, () => {
 var io = require('socket.io')(serverhttps,{
   allowRequest: (req, cb) => {
     console.log("Llamada desde: "+  req.headers.origin)
-    callback(null, true)
   }
 })
 
